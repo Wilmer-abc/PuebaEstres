@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Alumnos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+{% with mensajes = get_flashed_messages() %}
+  {% if mensajes %}
+    <div class="alert alert-success">
+      {% for mensaje in mensajes %}
+        {{ mensaje }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<body>
+    <div class="contenedor">
+        
+        <!-- Formulario de Registro -->
+        <div class="formulario">
+            <h2>Registro de Alumnos</h2>
+            <form action="{{ url_for('agregar') }}" method="post">
+                <label for="carnet1">Carnet:</label>
+                <input type="text" name="carnet1" required pattern="\d{4}" placeholder="XXXX">
+                    <input type="text" name="carnet2" required pattern="\d{2}" placeholder="XX">
+                    <input type="text" name="carnet3" required pattern="\d{4}" placeholder="XXXX">
+
+                <!-- Nombre -->
+                <label>Nombre:</label>
+                <input type="text" name="PrimerNombre" placeholder="Primer Nombre" required>
+                <input type="text" name="SegundoNombre" placeholder="Segundo Nombre">
+                <!--Apellido -->
+                <label>Apellido:</label>
+                <input type="text" name="PrimerApellido" placeholder="Primer Apellido" required>
+                <input type="text" name="SegundoApellido" placeholder="Segundo Apellido">
+                <!--Telefono -->
+                <label>Telefono:</label>
+                <input type="text" name="Telefono" placeholder="Numero de Telefono">
+                <!--correo -->
+                <label>Correo Electronico:</label>
+                <input type="email" name="CorreoElectronico" placeholder="Correo Electronico">
+                <!--pago -->
+                <label>Pagado:</label>
+                <select name="Pagado">
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" name="FechaNacimiento" required>
+
+                <button type="submit">Agregar Alumno</button>
+            </form>
+        </div>
+
+        <!-- Estadísticas de Edad -->
+        <div class="estadisticas">
+            <h2>Alumnos Inscritos por Edad</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Edad</th>
+                        <th>Cantidad de Alumnos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for edad, cantidad in estadisticas %}
+                    <tr>
+                        <td>{{ edad }}</td>
+                        <td>{{ cantidad }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!--campos y boton de buscar -->
+            <form action="/buscar" method="POST">
+                <label>Buscar</label>
+                <div class="carnet-container">
+                    <input type="text" name="carnet1" required pattern="\d{4}" placeholder="XXXX">
+                    <input type="text" name="carnet2" required pattern="\d{2}" placeholder="XX">
+                    <input type="text" name="carnet3" required pattern="\d{4}" placeholder="XXXX">
+                </div>
+                <button type="submit" class="btn btn-buscar">Buscar</button>
+            </form>
+
+            <!--campos y boton de eliminar -->
+            <form action="/eliminar" method="POST">
+                <label>Eliminar</label>
+                <div class="carnet-container">
+                    <input type="text" name="carnet1" required pattern="\d{4}" placeholder="XXXX">
+                    <input type="text" name="carnet2" required pattern="\d{2}" placeholder="XX">
+                    <input type="text" name="carnet3" required pattern="\d{4}" placeholder="XXXX">
+                </div>
+                <button type="submit" class="btn btn-eliminar">Eliminar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

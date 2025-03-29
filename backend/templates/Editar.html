@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estudiante</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    {% with mensajes = get_flashed_messages() %}
+  {% if mensajes %}
+    <div class="alert alert-success">
+      {% for mensaje in mensajes %}
+        {{ mensaje }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+    <div class="container mt-4">
+        <h2 class="text-center">Editar Estudiante</h2>
+
+        <div class="card p-4 shadow">
+            <form action="/actualizar" method="POST">
+
+                <input type="hidden" name="carnet1" value="{{ alumno.carnet1 }}">
+                <input type="hidden" name="carnet2" value="{{ alumno.carnet2 }}">
+                <input type="hidden" name="carnet3" value="{{ alumno.carnet3 }}">
+
+                <!-- Nombre y Apellido -->
+                <div class="mb-3">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" name="PrimerNombre" placeholder="Primer Nombre" value="{{ alumno.PrimerNombre }}" required>
+                    <input type="text" class="form-control" name="SegundoNombre" placeholder="Segundo Nombre" value="{{ alumno.SegundoNombre }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" name="PrimerApellido" placeholder="Primer Apellido" value="{{ alumno.PrimerApellido }}" required>
+                    <input type="text" class="form-control" name="SegundoApellido" placeholder="Segundo Apellido" value="{{ alumno.SegundoApellido }}">
+                </div>
+
+                <!-- Teléfono y Correo -->
+                <div class="mb-3">
+                    <label class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control" name="Telefono" placeholder="Número de Teléfono" value="{{ alumno.Telefono }}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Correo Electrónico:</label>
+                    <input type="email" class="form-control" name="CorreoElectronico" placeholder="Correo Electrónico" value="{{ alumno.CorreoElectronico }}">
+                </div>
+
+                <!-- Pagado -->
+                <div class="mb-3">
+                    <label class="form-label">Pagado:</label>
+                    <select class="form-select" name="Pagado">
+                        <option value="Sí" {% if alumno.Pagado == 'Sí' %}selected{% endif %}>Sí</option>
+                        <option value="No" {% if alumno.Pagado == 'No' %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+
+                <!-- Fecha de Nacimiento -->
+                <div class="mb-3">
+                    <label class="form-label">Fecha de Nacimiento:</label>
+                    <input type="date" class="form-control" name="FechaNacimiento" value="{{ alumno.FechaNacimiento }}">
+                </div>
+
+                <!-- Botones Guardar y Cancelar -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-Guardar">Guardar</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-Guardar">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

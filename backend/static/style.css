@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    background: white; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.formulario {
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.carnet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.acciones form {
+    width: 45%;
+}
+
+.btn-buscar {
+    background-color: #28a745;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
+
+.btn-secondary {
+    background-color: #dc3545;
+}
+
+.btn-Guardar, .btn-Cancelar {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; 
+    display: inline-block; 
+    text-align: center;
+}
+
+.btn-Guardar:hover{
+    background-color: #0056b3;
+}
+
+.btn-Cancelar:hover {
+    background-color: #e71313;}
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    
+    .contenedor {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .formulario {
+        width: 45%;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    .estadisticas {
+        width: 45%;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+    
